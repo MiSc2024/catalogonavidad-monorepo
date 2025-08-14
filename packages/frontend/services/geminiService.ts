@@ -113,7 +113,7 @@ const processTTSRequest = async ({
     const response = await fetch(AUDIO_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ payload }),
+      body: JSON.stringify(payload),
     });
     if (!response.ok) throw new Error(`API Error: ${response.statusText}`);
     const result = await response.json();
