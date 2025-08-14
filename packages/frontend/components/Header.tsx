@@ -12,22 +12,20 @@ export const Header: React.FC = () => {
             {/* Parte superior: imagen principal */}
             <div className="header-top flex-1 flex items-center justify-center relative">
                 <div className="absolute inset-0 flex items-center justify-center header-img-container">
-                    <img
-                        src="/header-trineo.webp"
-                        alt="Imagen principal del catálogo de Navidad"
-                        className="header-main-img max-w-[95vw] max-h-[32vh] md:max-h-[50vh] lg:max-h-[65vh] object-contain"
-                        style={{ marginTop: '2vh' }}
-                    />
+                  <img
+  src="/header-trineo.webp"
+  alt="Imagen principal del catálogo de Navidad"
+  className="header-main-img header-main-img-mobile object-contain"
+/>
                 </div>
             </div>
             {/* Parte inferior: textos y CTA */}
             <div className="header-bottom relative z-10 text-center px-2 pb-6 md:pb-16">
                 <h1
-                    className="header-title-responsive text-white leading-tight playfair-title font-bold header-3d animate-shine text-2xl sm:text-3xl md:text-5xl lg:text-6xl"
-                    style={{ wordBreak: 'break-word', maxWidth: '95vw', margin: '0 auto' }}
-                >
-                    Atracciones Navideñas de Alto Impacto
-                </h1>
+  className="header-title-responsive header-title-mobile text-white leading-tight playfair-title font-bold header-3d animate-shine text-2xl sm:text-3xl md:text-5xl lg:text-6xl"
+>
+  Atracciones Navideñas de Alto Impacto
+</h1>
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-6 mt-2 sm:mt-4">
                     <span className="relative flex items-center animate-shine">
                         <SparklesIcon className="w-7 h-7 sm:w-8 sm:h-8 text-yellow-300 mr-1 sm:mr-2 animate-pulse" />

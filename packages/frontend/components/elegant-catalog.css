@@ -1,7 +1,7 @@
 .header-main-img-mobile {
-  margin-top: 2vh;
+  margin-top: 8vh;
   max-width: 95vw;
-  max-height: 32vh;
+  max-height: 40vh;
 }
 @media (min-width: 768px) {
   .header-main-img-mobile {
