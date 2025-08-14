@@ -10,7 +10,21 @@ module.exports = async (req, res) => {
       .json({ error: "API Key no configurada en el servidor." });
   }
 
-  const prompt = `Eres un organizador de eventos experto y muy creativo. Para la atracción de Navidad llamada '${productName}', que consiste en '${productDescription}', genera 3 ideas de evento distintas y detalladas exclusivamente para un centro comercial. Para cada idea, proporciona un Título, un Tema, y sugerencias de Decoración y Actividades Complementarias. Formatea tu respuesta en HTML, usando <h4> para los títulos de las ideas y <strong> para 'Tema', 'Decoración' y 'Actividades'.`;
+  const prompt = `Eres un organizador de eventos navideños experto y creativo. Para la atracción llamada '${productName}', que consiste en '${productDescription}', genera 3 ideas de evento exclusivas para un centro comercial. Cada idea debe incluir:
+
+  - Un Título atractivo
+  - Un Tema navideño original
+  - Sugerencias de Decoración específicas para la atracción (colores, materiales, elementos visuales, iluminación, etc.)
+  - Actividades complementarias para familias y niños
+  - Propuestas de cupones QR para activar el centro comercial y motivar a los operadores de las tiendas, siguiendo este funcionamiento:
+    * Cada cupón QR está asociado a una atracción y franja horaria.
+    * El usuario escanea el QR, accede a una landing de campaña y canjea el cupón con un PIN de tienda (sin datos personales).
+    * KPIs a medir: scans, clics, canjes por tienda/franja/día, top-cupones, NPS.
+    * Privacidad: no se piden datos personales, solo opt-in opcional con consentimiento.
+    * Entregables: landing, QR, panel de canjes y reporte semanal.
+    * OASIZ aporta el listado de tiendas adheridas.
+
+Formatea la respuesta en HTML, usando <h4> para los títulos y <strong> para 'Tema', 'Decoración', 'Actividades' y 'Cupones QR'. Sé detallado y creativo, y adapta las ideas a la atracción presentada.`;
 
   try {
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${GEMINI_API_KEY}`;
