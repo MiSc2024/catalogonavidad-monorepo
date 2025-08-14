@@ -1,0 +1,220 @@
+.header-bottom {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 2.5rem;
+  max-width: 98vw;
+}
+.header-title-responsive {
+  font-size: 1.35rem;
+  line-height: 1.18;
+  margin-bottom: 0.7rem;
+  max-width: 90vw;
+  text-align: center;
+  word-break: break-word;
+}
+.header-bottom .playfair-title,
+.header-bottom .playfair-tagline,
+.header-bottom .playfair-desc {
+  text-align: center;
+  max-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+.header-bottom .montserrat-uppercase,
+.header-bottom .montserrat-btn {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 400px) {
+  .header-title-responsive {
+    font-size: 1.6rem;
+  }
+}
+@media (min-width: 600px) {
+  .header-title-responsive {
+    font-size: 2.2rem;
+  }
+}
+@media (min-width: 900px) {
+  .header-title-responsive {
+    font-size: 5rem;
+  }
+}
+/* Responsive header: divide en dos partes y ajusta tamaño de texto en móvil */
+.header-title-responsive {
+  font-size: 2.2rem;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+@media (min-width: 600px) {
+  .header-title-responsive {
+    font-size: 3.2rem;
+  }
+}
+@media (min-width: 900px) {
+  .header-title-responsive {
+    font-size: 5rem;
+  }
+}
+.header-bottom {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.header-top {
+  min-height: 38vh;
+  max-height: 48vh;
+}
+.header-bottom {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+/* Imagen principal del header más grande y subida */
+/* Imagen principal del header más pequeña y más arriba */
+ .header-img-container {
+  top: -4vh;
+  left: 0;
+  right: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
+.header-main-img {
+  width: 100%;
+  max-width: 70vw;
+  max-height: 65vh;
+  object-fit: contain;
+  opacity: 0.92;
+}
+@media (max-width: 900px) {
+  .header-img-container {
+    top: 0;
+  }
+  .header-main-img {
+    max-width: 90vw;
+    max-height: 45vh;
+  }
+}
+@media (max-width: 600px) {
+  .header-img-container {
+    top: 2vh;
+  }
+  .header-main-img {
+    max-width: 98vw;
+    max-height: 28vh;
+  }
+}
+/* Efecto profundidad 3D para el texto principal del header */
+.header-3d {
+  text-shadow:
+    0 2px 8px #181c2a,
+    0 0 2px #181c2a,
+    0 4px 16px rgba(24,28,42,0.45),
+    0 1px 0 #fffbe6,
+    0 8px 32px rgba(0,0,0,0.18);
+  -webkit-text-stroke: 1px #181c2a;
+  transform: translateZ(32px) scale(1.04);
+  position: relative;
+  z-index: 2;
+}
+/* Estilos para evitar inline en ProductSection */
+.main-image-frame-rel {
+  position: relative;
+  overflow: hidden;
+}
+.main-image-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(32px) brightness(0.25);
+  transition: background-image 0.5s;
+}
+.main-image-rel {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes shine {
+  0% { filter: brightness(1.2); }
+  50% { filter: brightness(2.2); }
+  100% { filter: brightness(1.2); }
+}
+.animate-shine {
+  animation: shine 2s infinite;
+}
+/* Marco animado para imagen principal */
+.main-image-frame {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  border-radius: 1rem;
+  background: #181c2a;
+  padding: 0;
+  transition: all 0.5s cubic-bezier(.4,0,.2,1);
+}
+.main-image-frame-zoom {
+  padding: 0.5rem;
+  transform: scale(1.12);
+}
+/* Importar la fuente Playfair Display y Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+
+.playfair-title {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+.playfair-tagline {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+.playfair-desc {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+}
+.playfair-list {
+  font-family: 'Playfair Display', serif;
+}
+.montserrat-uppercase {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.montserrat-table {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+}
+.montserrat-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+}
+
+/* Responsive y detalles visuales */
+@media (max-width: 768px) {
+  .main-image {
+    height: 40vh !important;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .main-image {
+    height: 60vh !important;
+  }
+}
+@media (min-width: 1025px) {
+  .main-image {
+    height: 70vh !important;
+  }
+}
