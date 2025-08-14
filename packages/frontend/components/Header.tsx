@@ -8,42 +8,44 @@ export const Header: React.FC = () => {
     const videoUrl = "https://www.youtube.com/embed/SVS4fa2mIYM";
 
     return (
-        <header className="h-screen bg-brand-header flex flex-col overflow-hidden">
+        <header className="min-h-screen bg-brand-header flex flex-col overflow-hidden">
             {/* Parte superior: imagen principal */}
             <div className="header-top flex-1 flex items-center justify-center relative">
                 <div className="absolute inset-0 flex items-center justify-center header-img-container">
                     <img
                         src="/header-trineo.webp"
                         alt="Imagen principal del catálogo de Navidad"
-                        className="header-main-img"
+                        className="header-main-img max-w-[95vw] max-h-[32vh] md:max-h-[50vh] lg:max-h-[65vh] object-contain"
+                        style={{ marginTop: '2vh' }}
                     />
                 </div>
             </div>
             {/* Parte inferior: textos y CTA */}
-            <div className="header-bottom relative z-10 text-right px-4 pb-8 md:pb-16">
+            <div className="header-bottom relative z-10 text-center px-2 pb-6 md:pb-16">
                 <h1
-                    className="header-title-responsive text-white leading-tight playfair-title font-bold header-3d animate-shine"
+                    className="header-title-responsive text-white leading-tight playfair-title font-bold header-3d animate-shine text-2xl sm:text-3xl md:text-5xl lg:text-6xl"
+                    style={{ wordBreak: 'break-word', maxWidth: '95vw', margin: '0 auto' }}
                 >
                     Atracciones Navideñas de Alto Impacto
                 </h1>
-                <div className="flex flex-row justify-end items-center gap-6 mt-4">
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-6 mt-2 sm:mt-4">
                     <span className="relative flex items-center animate-shine">
-                        <SparklesIcon className="w-8 h-8 text-yellow-300 mr-2 animate-pulse" />
-                        <span className="text-4xl md:text-5xl font-bold text-brand-accent playfair-title drop-shadow-lg">Cometa</span>
+                        <SparklesIcon className="w-7 h-7 sm:w-8 sm:h-8 text-yellow-300 mr-1 sm:mr-2 animate-pulse" />
+                        <span className="text-2xl sm:text-4xl md:text-5xl font-bold text-brand-accent playfair-title drop-shadow-lg">Cometa</span>
                     </span>
-                    <span className="mx-2 text-4xl md:text-5xl font-bold text-white/80 playfair-title italic">y</span>
+                    <span className="mx-1 sm:mx-2 text-2xl sm:text-4xl md:text-5xl font-bold text-white/80 playfair-title italic">y</span>
                     <span className="relative flex items-center animate-shine">
-                        <SparklesIcon className="w-8 h-8 text-pink-300 mr-2 animate-pulse" />
-                        <span className="text-4xl md:text-5xl font-bold text-brand-accent playfair-title drop-shadow-lg">Cupido</span>
+                        <SparklesIcon className="w-7 h-7 sm:w-8 sm:h-8 text-pink-300 mr-1 sm:mr-2 animate-pulse" />
+                        <span className="text-2xl sm:text-4xl md:text-5xl font-bold text-brand-accent playfair-title drop-shadow-lg">Cupido</span>
                     </span>
                 </div>
-                <div className="text-right mt-2">
-                    <span className="text-2xl md:text-3xl italic text-white/80 playfair-tagline font-semibold">Los renos favoritos de la Navidad 2025</span>
+                <div className="text-center mt-2">
+                    <span className="text-lg sm:text-2xl md:text-3xl italic text-white/80 playfair-tagline font-semibold block">Los renos favoritos de la Navidad 2025</span>
                 </div>
-                <p className="text-brand-accent mt-4 text-3xl md:text-4xl font-semibold playfair-desc">Las atracciones que convierten visitas en ventas</p>
-                <p className="text-white mt-2 text-2xl md:text-3xl playfair-desc">Garantizamos filas de familias y compras prolongadas</p>
+                <p className="text-brand-accent mt-2 sm:mt-4 text-lg sm:text-2xl md:text-4xl font-semibold playfair-desc">Las atracciones que convierten visitas en ventas</p>
+                <p className="text-white mt-1 sm:mt-2 text-base sm:text-xl md:text-3xl playfair-desc">Garantizamos filas de familias y compras prolongadas</p>
                 <button
-                    className="inline-block mt-8 px-8 py-4 bg-brand-accent text-white text-xl font-bold rounded-lg shadow-lg hover:bg-brand-accent/90 transition-all"
+                    className="inline-block mt-6 sm:mt-8 px-6 sm:px-8 py-3 sm:py-4 bg-brand-accent text-white text-base sm:text-xl font-bold rounded-lg shadow-lg hover:bg-brand-accent/90 transition-all"
                     onClick={() => setShowVideo(true)}
                 >
                     Ver la atracción en acción
