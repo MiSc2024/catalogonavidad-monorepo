@@ -168,7 +168,33 @@ export const generateAndPlayAudio = (
   const textElement = document.getElementById(elementId);
   if (!textElement || !textElement.firstChild) return;
   const textToSpeak = textElement.childNodes[0].nodeValue?.trim() || "";
-  const payload = buildAudioPayload(textToSpeak);
+
+  // Personalización por atracción, integrando el texto del catálogo
+  let payload;
+  if (elementId.includes("reindeer")) {
+    // Flecha y Bailarina leen la descripción como si discutieran
+    payload = buildMultiCharacterPayload([
+      { speaker: "Flecha", voice: "Puck", text: `¡Mi voz es la mejor para contar esto! ${textToSpeak}` },
+      { speaker: "Bailarina", voice: "Leda", text: `¡No, la mía es más melodiosa! Escucha: ${textToSpeak}` }
+    ]);
+  } else if (elementId.includes("sleigh")) {
+    // Cometa, Cupido y Papá Noel leen la descripción en formato diálogo
+    payload = buildMultiCharacterPayload([
+      { speaker: "Cometa", voice: "Puck", text: `Papá Noel, ¿puedes contarnos sobre el trineo VR?` },
+      { speaker: "Papá Noel", voice: "Santa", text: `${textToSpeak}` },
+      { speaker: "Cupido", voice: "Leda", text: `¡Qué emocionante! Quiero probarlo ya.` }
+    ]);
+  } else if (elementId.includes("elevator")) {
+    // Duendes leen la descripción invitando a los niños
+    payload = buildMultiCharacterPayload([
+      { speaker: "Duende1", voice: "Zubenelgenubi", text: `¡Niños, escuchen esto! ${textToSpeak}` },
+      { speaker: "Duende2", voice: "Leda", text: `¡Vamos al Polo Norte! ${textToSpeak}` }
+    ]);
+  } else {
+    // Por defecto, voz elegante
+    payload = buildAudioPayload(textToSpeak);
+  }
+
   processTTSRequest({
     payload,
     button,
@@ -179,6 +205,30 @@ export const generateAndPlayAudio = (
   });
 };
 
+// Utilidad para payload de varios personajes
+const buildMultiCharacterPayload = (dialogues: { speaker: string; voice: string; text: string }[]) => ({
+  contents: [
+    {
+      parts: [
+        {
+          text: dialogues.map(d => `${d.speaker}: ${d.text}`).join("\n")
+        }
+      ]
+    }
+  ],
+  generationConfig: {
+    responseModalities: ["AUDIO"],
+    speechConfig: {
+      multiSpeakerVoiceConfig: {
+        speakerVoiceConfigs: dialogues.map(d => ({
+          speaker: d.speaker,
+          voiceConfig: { prebuiltVoiceConfig: { voiceName: d.voice } }
+        }))
+      }
+    }
+  },
+  model: DEFAULT_MODEL,
+});
 const buildAudioPayload = (text: string) => ({
   contents: [
     {
