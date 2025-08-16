@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Header.css';
 import './elegant-catalog.css';
 import { VideoModal } from './VideoModal';
 import { SparklesIcon } from './icons/SparklesIcon';

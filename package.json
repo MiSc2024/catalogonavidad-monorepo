@@ -2,7 +2,24 @@
   "name": "catalogonavidad-monorepo",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ]
+  "dependencies": {},
+  "devDependencies": {
+    "husky": "^9.1.6",
+    "markdownlint-cli": "^0.41.0",
+    "@eslint/js": "^9.12.0",
+    "@typescript-eslint/eslint-plugin": "^8.8.0",
+    "@typescript-eslint/parser": "^8.8.0",
+    "eslint": "^9.12.0",
+    "eslint-plugin-react": "^7.36.1",
+    "eslint-plugin-react-hooks": "^5.0.0"
+  },
+  "scripts": {
+    "prepare": "husky",
+  "lint:md": "markdownlint \"**/*.md\" --ignore node_modules --ignore packages/frontend/node_modules --ignore .netlify",
+  "lint:js": "eslint . --max-warnings=10",
+  "dev:kill": "lsof -ti:8888 | xargs kill -9 2>/dev/null || true && lsof -ti:5173 | xargs kill -9 2>/dev/null || true",
+  "dev:vite": "npm --prefix packages/frontend run dev",
+  "dev:netlify": "npx netlify dev --offline --port 8888 --target-port 5173 --cwd packages/frontend --no-open",
+  "dev": "npm run dev:kill && (npm run dev:vite &) && npm run dev:netlify"
+  }
 }

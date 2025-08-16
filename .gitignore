@@ -1,0 +1,15 @@
+# Local Netlify folder
+.netlify
+
+# Environment files (do not commit secrets)
+.env
+.env.*
+!.env.example
+packages/frontend/.env.local
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+

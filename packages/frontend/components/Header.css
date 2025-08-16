@@ -1,0 +1,14 @@
+/* Estilos migrados desde Header.tsx */
+.header-main-img {
+  object-fit: contain;
+}
+.header-title-responsive {
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.header-img-container {
+  width: 100%;
+  height: 100%;
+}
+/* Puedes agregar más estilos aquí según los estilos inline que encuentres */

@@ -1,0 +1,14 @@
+
+[build]
+base = "packages/frontend"
+command = "npm run build"
+publish = "dist"
+functions = "../../netlify/functions"
+
+[build.environment]
+# Opcional: Node LTS estable
+NODE_VERSION = "20"
+
+# Notas:
+# - En `netlify dev`, las funciones se sirven desde `netlify/functions`.
+# - Las variables de entorno se cargan desde `.env` en la raíz del repo.
