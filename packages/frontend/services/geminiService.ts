@@ -168,56 +168,9 @@ export const generateAndPlayAudio = (
   const textElement = document.getElementById(elementId);
   if (!textElement || !textElement.firstChild) return;
   const textToSpeak = textElement.childNodes[0].nodeValue?.trim() || "";
-
-  // Personalización por atracción, integrando el texto del catálogo
-  let payload;
-  if (elementId.includes("reindeer")) {
-    // Flecha y Bailarina leen la descripción como si discutieran
-    payload = buildMultiCharacterPayload([
-      {
-        speaker: "Flecha",
-        voice: "Puck",
-        text: `¡Mi voz es la mejor para contar esto! ${textToSpeak}`,
-      },
-      {
-        speaker: "Bailarina",
-        voice: "Leda",
-        text: `¡No, la mía es más melodiosa! Escucha: ${textToSpeak}`,
-      },
-    ]);
-  } else if (elementId.includes("sleigh")) {
-    // Cometa, Cupido y Papá Noel leen la descripción en formato diálogo
-    payload = buildMultiCharacterPayload([
-      {
-        speaker: "Cometa",
-        voice: "Puck",
-        text: `Papá Noel, ¿puedes contarnos sobre el trineo VR?`,
-      },
-      { speaker: "Papá Noel", voice: "Santa", text: `${textToSpeak}` },
-      {
-        speaker: "Cupido",
-        voice: "Leda",
-        text: `¡Qué emocionante! Quiero probarlo ya.`,
-      },
-    ]);
-  } else if (elementId.includes("elevator")) {
-    // Duendes leen la descripción invitando a los niños
-    payload = buildMultiCharacterPayload([
-      {
-        speaker: "Duende1",
-        voice: "Zubenelgenubi",
-        text: `¡Niños, escuchen esto! ${textToSpeak}`,
-      },
-      {
-        speaker: "Duende2",
-        voice: "Leda",
-        text: `¡Vamos al Polo Norte! ${textToSpeak}`,
-      },
-    ]);
-  } else {
-    // Por defecto, voz elegante
-    payload = buildAudioPayload(textToSpeak);
-  }
+  
+  // Simplificado: solo voz única para evitar timeouts
+  const payload = buildAudioPayload(textToSpeak);
 
   processTTSRequest({
     payload,
@@ -229,36 +182,10 @@ export const generateAndPlayAudio = (
   });
 };
 
-// Utilidad para payload de varios personajes
-const buildMultiCharacterPayload = (
-  dialogues: { speaker: string; voice: string; text: string }[]
-) => ({
-  contents: [
-    {
-      parts: [
-        {
-          text: dialogues.map((d) => `${d.speaker}: ${d.text}`).join("\n"),
-        },
-      ],
-    },
-  ],
-  generationConfig: {
-    responseModalities: ["AUDIO"],
-    speechConfig: {
-      multiSpeakerVoiceConfig: {
-        speakerVoiceConfigs: dialogues.map((d) => ({
-          speaker: d.speaker,
-          voiceConfig: { prebuiltVoiceConfig: { voiceName: d.voice } },
-        })),
-      },
-    },
-  },
-  model: DEFAULT_MODEL,
-});
 const buildAudioPayload = (text: string) => ({
   contents: [
     {
-      parts: [{ text: `Di con un tono profesional y elegante: ${text}` }],
+      parts: [{ text: `${text}` }],
     },
   ],
   generationConfig: {
@@ -279,10 +206,8 @@ export const generateReindeerDialogue = (
     React.SetStateAction<HTMLSpanElement | null>
   >
 ) => {
-  const script = `Genera un diálogo entre dos personajes.
-    Flecha: ¡Con mi voz, este coro de Navidad será el mejor de todos!
-    Bailarina: ¿Tu voz? ¡La mía es mucho más melodiosa! ¡Escucha esto!`;
-  const payload = buildDialoguePayload(script);
+  const script = `Los renos Flecha y Bailarina están emocionados por el coro navideño.`;
+  const payload = buildAudioPayload(script);
   processTTSRequest({
     payload,
     button,
@@ -292,25 +217,3 @@ export const generateReindeerDialogue = (
     setCurrentPlayingButton,
   });
 };
-
-const buildDialoguePayload = (script: string) => ({
-  contents: [{ parts: [{ text: script }] }],
-  generationConfig: {
-    responseModalities: ["AUDIO"],
-    speechConfig: {
-      multiSpeakerVoiceConfig: {
-        speakerVoiceConfigs: [
-          {
-            speaker: "Flecha",
-            voiceConfig: { prebuiltVoiceConfig: { voiceName: "Puck" } },
-          },
-          {
-            speaker: "Bailarina",
-            voiceConfig: { prebuiltVoiceConfig: { voiceName: "Leda" } },
-          },
-        ],
-      },
-    },
-  },
-  model: DEFAULT_MODEL,
-});
