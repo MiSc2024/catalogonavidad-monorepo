@@ -20,16 +20,12 @@ export default async function (request, context) {
       );
     }
 
-    const prompt = `Para la atracción navideña '${productName}' (${productDescription}), genera 2 ideas de eventos para centro comercial.
+        const prompt = `Genera 2 ideas simples para eventos navideños con ${productName}:
 
-Para cada idea incluye:
-- **Título** atractivo
-- **Tema** navideño 
-- **Decoración** específica
-- **Actividades** para familias
-- **Cupones QR** promocionales
+1. [Título corto]: [Descripción de 1-2 líneas]
+2. [Título corto]: [Descripción de 1-2 líneas]
 
-Responde en HTML con <h4> para títulos y <strong> para secciones. Máximo 200 palabras por idea.`;
+Formato HTML básico.`;
 
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${GEMINI_API_KEY}`;
     const geminiResponse = await fetch(apiUrl, {
