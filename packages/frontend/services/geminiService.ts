@@ -168,7 +168,7 @@ export const generateAndPlayAudio = (
   const textElement = document.getElementById(elementId);
   if (!textElement || !textElement.firstChild) return;
   const textToSpeak = textElement.childNodes[0].nodeValue?.trim() || "";
-  
+
   // Simplificado: solo voz única para evitar timeouts
   const payload = buildAudioPayload(textToSpeak);
 

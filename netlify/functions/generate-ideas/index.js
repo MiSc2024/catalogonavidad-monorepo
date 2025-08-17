@@ -20,7 +20,7 @@ export default async function (request, context) {
       );
     }
 
-        const prompt = `Genera 2 ideas simples para eventos navideños con ${productName}:
+    const prompt = `Genera 2 ideas simples para eventos navideños con ${productName}:
 
 1. [Título corto]: [Descripción de 1-2 líneas]
 2. [Título corto]: [Descripción de 1-2 líneas]
