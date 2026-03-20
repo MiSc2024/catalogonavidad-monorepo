@@ -24,6 +24,8 @@ export const Header: React.FC = () => {
             <div className="header-bottom relative z-10 text-center px-2 pb-6 md:pb-16">
                 <h1
   className="header-title-responsive header-title-mobile text-white leading-tight playfair-title font-bold header-3d animate-shine text-2xl sm:text-3xl md:text-5xl lg:text-6xl"
+  data-sb-object-id="page"
+  data-sb-field-path="title"
 >
   Atracciones Navideñas de Alto Impacto
 </h1>

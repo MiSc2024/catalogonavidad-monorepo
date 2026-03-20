@@ -1,8 +1,0 @@
-[build]
-command = "cd packages/frontend && npm run dev"
-publish = "packages/frontend/dist"
-functions = "netlify/functions"
-
-[build.environment]
-# Opcional: Node LTS estable
-NODE_VERSION = "20"

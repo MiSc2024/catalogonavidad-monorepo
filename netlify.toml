@@ -6,8 +6,8 @@ publish = "dist"
 functions = "../../netlify/functions"
 
 [build.environment]
-# Opcional: Node LTS estable
-NODE_VERSION = "20"
+# Obligado Node 22: soporte de importaciones dinámicas y fs/promises top-level.
+NODE_VERSION = "22"
 
 # Notas:
 # - En `netlify dev`, las funciones se sirven desde `netlify/functions`.
